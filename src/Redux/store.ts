@@ -1,13 +1,16 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
-import {weatherApi} from '../features/weather/weatherAPI'
-import map from '../features/weather/weatherSlice'
+import {weatherApi} from '../api/weatherAPI'
+import map from './weatherSlice'
+import login from './UserSlice'
+
 
 
 export const store = configureStore({
   reducer: {
     [weatherApi.reducerPath]: weatherApi.reducer,
-    map
+    map,
+    login,
   },
 
   middleware: (getDefaultMiddleware) =>

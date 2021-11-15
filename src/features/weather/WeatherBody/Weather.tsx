@@ -1,18 +1,25 @@
 import React, { useEffect, FC, useState } from "react";
+import { useParams } from 'react-router-dom';
 import CircularProgress from "@mui/material/CircularProgress";
-import { useGetWeatherByQueryQuery } from "./weatherAPI";
-import { Fact, Geo } from "./type";
+import { useGetWeatherByQueryQuery } from "../../../api/weatherAPI";
+import { Fact, Geo, Forecast, ForecastParts, QuizParams } from "../type";
 import Box from "@mui/material/Box";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert, { AlertProps } from "@mui/material/Alert";
 import { FetchBaseQueryError } from "@reduxjs/toolkit/dist/query";
-import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import { setCoords, setCity } from "./weatherSlice";
-
-
-
+import { useAppSelector, useAppDispatch } from '../../../Redux/hooks';
+import { setCoords, setCity } from "../../../Redux/weatherSlice";
+import { WeatherCard } from "../WeatherCard";
+import { WeatherInfo } from "../WeatherInfo";
 import { Input } from "@mui/material";
-import YandexMapComponent from "./map";
+import YandexMapComponent from "../map";
+import PrimarySearchAppBar from "../Header"
+import Footer from "../Footer"
+import background from './sky.jpg'
+
+import { SliderMain } from  "../Slider"
+import { url } from "inspector";
+
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
   props,
@@ -29,22 +36,18 @@ export interface mapApi {
 }
 
 export const Weather: FC<Props> = (props) => {
-  // debugger
+  const { id } = useParams<QuizParams>()
   const coords = useAppSelector(state => state.map.coords);
 
   const city = useAppSelector(state => state.map.city);
   const dispatch = useAppDispatch();
-  // const query = useQuery()
-  // const lat = query.get("lat");
-  // const lon = query.get("lon");
-  // const [state, setState] = useState<(number[] )>([53.902284,27.561831]);
-  // const [city, setCity] = useState<string>('Minsk');
+  const [cityState, setCityState] = useState<string>('Minsk');
 
   const [geo, setGeo] = useState<Geo>();
+  const [forecast, setForecast] = useState<Forecast>();
+
   const [factState, setFact] = useState<Fact>();
   const [open, setOpen] = useState(false);
-  const [loadMaps, setLoadMaps] = useState<any>();
-  const [lon, setLon] = useState('51.104087');
   const { data, error, isError, isLoading, isSuccess } =
     useGetWeatherByQueryQuery({
       lat: Number(coords[0]),
@@ -54,8 +57,10 @@ export const Weather: FC<Props> = (props) => {
   useEffect(() => {
     if (isSuccess && data) {
       setGeo(data.geo_object);
+      setForecast(data.forecasts);
       setFact(data.fact);
       setOpen(false);
+      console.log(forecast)
     }
   }, [isSuccess, data]);
 
@@ -73,6 +78,9 @@ export const Weather: FC<Props> = (props) => {
 
     setOpen(false);
   };
+  const handleClick=()=>{
+    dispatch(setCity(cityState));
+  }
 
   const changeCoords =
     (direction: "lat" | "lon") => (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -86,51 +94,50 @@ export const Weather: FC<Props> = (props) => {
       }
     };
   const changeCity = (e: React.ChangeEvent<HTMLInputElement>) => {
-    
-    dispatch(setCity(e.target.value));
-    console.log(city)
-    // onLoadMap(loadMaps)  
+    setCityState(e.target.value);
   }
 
-  //  const onLoadMap = (ymaps: any) =>{
-  //    console.log(ymaps)
-    
-  //     ymaps.geocode(city)?.then((result:any) => setState(result.geoObjects.get(0).geometry.getCoordinates()))
-    
-  // }
-  
+  let date = (d:string)=>{
+  return new Date(d).toLocaleString('ru',
+  {
+    day: 'numeric',
+    month: 'long',
+  }
+)};
+
+ 
   return (
-    <div>
+    <div >
+      <PrimarySearchAppBar />
+    {/* <div style={{maxWidth: '1200px', width: '100%', margin: '0 auto', }}> */}
+    
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
           {error && ((error as FetchBaseQueryError)?.data as string)}
         </Alert>
       </Snackbar>
-      {isLoading ? (
+      {isLoading  ? (
         <CircularProgress></CircularProgress>
-      ) : (
-        <Box sx={{ display: "flex", flexDirection: "column" }}>
-          <p>Country: {geo?.country?.name}</p>
-          <p>Province: {geo?.province?.name}</p>
-          <p>Temp: {factState?.temp}</p>
-          <p>
-            <img
-              src={`https://yastatic.net/weather/i/icons/funky/dark/${factState?.icon}.svg`}
-              alt="weather icon"
-            ></img>
-          </p>
-        </Box>
-      )}
-      <Box>
-        <Input name="lat" value={coords[0]} onChange={changeCoords("lat")}></Input>
-        <Input name="lon" value={coords[1]} onChange={changeCoords("lon")}></Input>
-      </Box>
-      <Input name="country" value={city} onChange={changeCity}></Input>
-
- 
-      <YandexMapComponent city={city} />
+      ) : (<>
+      <div style={{padding: "30px"}}>
+        {forecast &&  <WeatherInfo forecast={forecast[Number(id)||0]} geo={geo} fact= {factState}/>}
         
-     
+        <div style ={{maxWidth: '1200px', width: '100%', margin: '0 auto', display: 'flex', justifyContent: "space-between"}}>
+       {forecast && forecast.map((el: ForecastParts, index:number)=> (
+       <WeatherCard forecast={el} geo={geo} fact= {factState} key={index} index={index}/>
+      ))}
+       </div> </div></>)
+      }
+      <Box>
+       Поиск по координатам:
+      </Box>
+      <Box>
+        Lat: <Input name="lat" value={coords[0]} onChange={changeCoords("lat")}></Input>
+        Lon: <Input name="lon" value={coords[1]} onChange={changeCoords("lon")}></Input>
+      </Box>
+      <YandexMapComponent city={city} />
+      <Footer/>
+    {/* </div> */}
     </div>
   );
 };

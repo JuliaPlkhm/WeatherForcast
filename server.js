@@ -8,7 +8,7 @@ app.use(cors());
 
 const fetchWeather = async ({ lat, lon }) => {
   const res = await axios(
-    `https://api.weather.yandex.ru/v2/forecast?lat=${lat}&lon=${lon}`,
+    `https://api.weather.yandex.ru/v2/forecast?lat=${lat}&lon=${lon}&[lang=ru_RU]`,
     {
       headers: {
         "X-Yandex-API-Key": "fe70a1e6-71d9-47cb-b9b8-dcf7d9413f56",

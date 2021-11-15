@@ -1,0 +1,38 @@
+
+
+export const weatherTranslations : any ={
+    'clear': 'Ясно',
+    'partly-cloudy': 'Малооблачно',
+    'cloudy': 'Облачно с прояснениями',
+    'overcast':'Пасмурно',
+    'drizzle': 'Морось',
+    'light-rain' : 'Небольшой дождь',
+    'rain': 'Дождь',
+    'moderate-rain' : 'Умеренно сильный дождь',
+    'heavy-rain' : 'Сильный дождь',
+    'continuous-heavy-rain' : 'Длительный сильный дождь',
+    'showers' : 'Ливень',
+    'wet-snow' : 'Дождь со снегом',
+    'light-snow' : 'Небольшой снег',
+    'snow': 'Снег',
+    'snow-showers' : 'Снегопад',
+    'hail' : 'Град',
+    'thunderstorm' : 'Гроза',
+    'thunderstorm-with-rain' : 'Дождь с грозой',
+    'thunderstorm-with-hail' : 'Гроза с градом',
+    'partly-cloudy-and-light-rain':'Малооблачно, небольшой дождь',
+    'partly-cloudy-and-rain': "Малооблачно, дождь",
+    'overcast-and-rain': 'Значительная облачность, сильный дождь',
+    'overcast-thunderstorms-with-rain': 'Сильный дождь с грозой',
+    'cloudy-and-light-rain': 'Облачно, небольшой дождь',
+    'overcast-and-light-rain' : 'Значительная облачность, небольшой дождь',
+    'cloudy-and-rain' : 'Облачно, дождь',
+    'overcast-and-wet-snow':'Дождь со снегом',
+    'partly-cloudy-and-light-snow' : 'Небольшой снег',
+    'partly-cloudy-and-snow': 'Малооблачно, снег',
+    'overcast-and-snow' : 'Снегопад',
+    'cloudy-and-light-snow' : 'Облачно, небольшой снег',
+    'overcast-and-light-snow' :'Значительная облачность, небольшой снег',
+    'cloudy-and-snow': 'Облачно, снег'
+
+}
