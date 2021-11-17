@@ -21,7 +21,7 @@ function App() {
   };
   return (
     <Context.Provider value={ctx}>
-      <HashRouter>
+      <HashRouter basename={process.env.PUBLIC_URL}>
         <Switch>
           <ProtectedRoute path={`/:city/:id`} component={Weather} exact/>
             {/* <Weather />
