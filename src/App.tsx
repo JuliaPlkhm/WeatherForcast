@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect, HashRouter } from "react-router-dom";
 import { Weather } from './views/WeatherBody/Weather';
 import { createContext, useState } from "react";
 import  {IContext} from './features/weather/type'
@@ -21,7 +21,7 @@ function App() {
   };
   return (
     <Context.Provider value={ctx}>
-      <Router>
+      <HashRouter>
         <Switch>
           <ProtectedRoute path={`/:city/:id`} component={Weather} exact/>
             {/* <Weather />
@@ -33,7 +33,7 @@ function App() {
            {loggedIn? <Redirect to="/" /> :<Login />} 
           </Route>
         </Switch>
-      </Router>
+      </HashRouter>
     </Context.Provider>
   );
 }
