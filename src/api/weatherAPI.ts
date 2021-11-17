@@ -13,7 +13,7 @@ export type Response = { now: number; geo_object: Geo; fact: Fact; forecasts: Fo
 
 export const weatherApi = createApi({
   reducerPath: "weatherApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:4000" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "https://server-weather-api.herokuapp.com/" }),
   endpoints: (builder) => ({
     getWeatherByQuery: builder.query<Response, Coords>({
       query: ({ lat, lon }) => `/weather?lat=${lat}&lon=${lon}`

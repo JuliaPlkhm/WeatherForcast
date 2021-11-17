@@ -5,7 +5,7 @@ import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
 import { weatherTranslations } from "../weatherTranslations";
-import { useParams, Link } from 'react-router-dom';
+import {  Link } from 'react-router-dom';
 import './WeatherCard.style.css'
 
 export const WeatherCard: FC<PropsCard> = (props) => {

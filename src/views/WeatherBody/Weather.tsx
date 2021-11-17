@@ -3,20 +3,16 @@ import { Context } from "../../App";
 import { useParams } from 'react-router-dom';
 import CircularProgress from "@mui/material/CircularProgress";
 import { useGetWeatherByQueryQuery } from "../../api/weatherAPI";
-import { Fact, Geo, Forecast, ForecastParts, QuizParams } from "../../features/weather/type";
-import Box from "@mui/material/Box";
+import {  ForecastParts, QuizParams } from "../../features/weather/type";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert, { AlertProps } from "@mui/material/Alert";
-import { useAppSelector, useAppDispatch } from '../../Redux/hooks';
-import { setCoords, setCity } from "../../Redux/weatherSlice";
+import { useAppSelector } from '../../Redux/hooks';
 import { WeatherCard } from "../../features/weather/WeatherCard/WeatherCard";
 import { WeatherInfo } from "../../features/weather/WeatherInfo/WeatherInfo";
-import { Input } from "@mui/material";
 import YandexMapComponent from "../../features/weather/map";
 import PrimarySearchAppBar from "../../features/weather/Header/Header"
 import Footer from "../../features/weather/Footer/Footer"
 import './Weather.css'
-import background from './../../assets/sky.jpg'
 import {CoordsSearch} from "../../features/weather/CoordsSearch/CoordsSearch"
 import {CityGrid} from "../../features/weather/CityGrid/CityGrid"
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
@@ -29,7 +25,6 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 
 export const Weather: FC = () => {
   const { id } = useParams<QuizParams>()
-  const dispatch = useAppDispatch();
   const context = useContext(Context);
   const coords = useAppSelector(state => state.map.coords);
   const city = useAppSelector(state => state.map.city);

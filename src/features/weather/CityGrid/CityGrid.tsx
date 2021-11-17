@@ -20,8 +20,8 @@ export const CityGrid: FC = () => {
     return (
 
         <div className="cityGrid">
-            {cities.map((el: string) => (
-                <Link className={`cityGrid__item-${context.theme}`} to={`/${el}/0`} onClick={handleClick(el)} >{el}</Link>
+            {cities.map((el: string, index:number) => (
+                <Link className={`cityGrid__item-${context.theme}`} to={`/${el}/0`} onClick={handleClick(el)} key={index}>{el}</Link>
             ))}
         </div>
 

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import {
   YMaps,
   Map,
-  SearchControl,
   GeolocationControl,
   Placemark,
 } from "react-yandex-maps";
@@ -25,7 +24,7 @@ const YandexMapComponent = (props:Props) => {
     if (loadMaps) {
       onLoadMap(loadMaps)
     };
-  }, [props.city]);
+  }, [props.city, loadMaps]);
 
 return (
   <div style={{maxWidth:"1200px", width: '100%', margin: "auto",marginBottom: "30px", padding: "0 30px"}}>

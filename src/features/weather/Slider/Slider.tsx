@@ -20,7 +20,7 @@ export const SliderMain: FC = ({children}) => {
   
     return (
         <Slider {...defaultSettings} >
-            {((children as [])?.length == 0 )? ( 
+            {((children as [])?.length === 0 )? ( 
              
                <Typography variant="body2" color="text.secondary" > Нет данных
             </Typography>

@@ -87,7 +87,7 @@ export default function PrimarySearchAppBar() {
       <AppBar className="container-header" position="static" >
         <Toolbar>
 
-          <img src={logo} style={{ height: "40px" }} />
+          <img src={logo} style={{ height: "40px" }} alt="logo" />
           <Search>
             <SearchIconWrapper>
               <SearchIcon />

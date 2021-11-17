@@ -6,7 +6,7 @@ interface State {
   loggedIn: boolean
 }
 
-const initialState = {
+const initialState: State = {
   coords: [53.902284,27.561831],
   city: 'Минск',
   loggedIn: false

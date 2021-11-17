@@ -39,10 +39,10 @@ export const WeatherInfo: FC<PropsInfo> = (props) => {
         {`Ощущается как ${props.forecast?.parts.day_short.feels_like}` || "Нет данных"}
       </Typography>
       <Typography className = "weatherInfo__text" variant="h6" color="text.secondary" >
-        {props.forecast && weatherTranslations[String(props.forecast?.parts.day_short.condition)] || "Нет данных"}
+        {(props.forecast && weatherTranslations[String(props.forecast?.parts.day_short.condition)] )|| "Нет данных"}
       </Typography>
       <SliderMain>
-          {props.forecast?.hours.map((el) => <HourWeather hour={el.hour} icon={el.icon} temp={el.temp} />)}
+          {props.forecast?.hours.map((el, index) => <HourWeather hour={el.hour} icon={el.icon} temp={el.temp} key ={index}/>)}
       </SliderMain>
       
     </Card>
