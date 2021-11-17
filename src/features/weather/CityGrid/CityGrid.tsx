@@ -15,6 +15,7 @@ export const CityGrid: FC = () => {
     const dispatch = useAppDispatch();
     const handleClick = (el: string) => (event: React.MouseEvent<HTMLElement>) => {
         dispatch(setCity(el));
+        window.scrollTo(0, 0)
     }
     return (
 
