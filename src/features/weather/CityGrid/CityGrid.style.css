@@ -8,12 +8,13 @@
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     text-align: start;
+    color: blue;
 
 }
 
-.cityGrid__item{
+.cityGrid__item-light{
     color: black;
 }
-/* .cityGrid__item:nth-child(3n+1) { order: 1; }
-.cityGrid__item:nth-child(3n+2) { order: 2; }
-.cityGrid__item:nth-child(3n)   { order: 3; } */
+.cityGrid__item-dark{
+    color: white;
+}

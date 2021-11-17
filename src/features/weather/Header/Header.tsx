@@ -1,5 +1,5 @@
-import React, {  useState, useContext } from "react";
-import { Context } from "../../App";
+import React, {  useState } from "react";
+
 
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
@@ -10,13 +10,13 @@ import Avatar from '@mui/material/Avatar';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import { useAppSelector, useAppDispatch } from '../../Redux/hooks';
-import { setCity } from "../../Redux/weatherSlice";
-import logo from './../../assets/logo.png'
-import { Login } from './Login'
-import Switch from '@mui/material/Switch';
+import { useAppSelector, useAppDispatch } from '../../../Redux/hooks';
+import { setCity } from "../../../Redux/weatherSlice";
+import logo from './../../../assets/logo.png'
+import {Switches} from '../Switch'
+import './Header.style.css'
 
-const label = { inputProps: { 'aria-label': 'Switch demo' } };
+
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -58,22 +58,15 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function PrimarySearchAppBar() {
-  const loggedIn = useAppSelector(state => state.login.loggedIn);
   const {name, imageUrl, email} = useAppSelector(state => state.login.user);
-  const context = useContext(Context);
  
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [cityState, setCityState] = useState<string>('');
-  const city = useAppSelector(state => state.map.city);
   const dispatch = useAppDispatch();
  
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
-
-  const handleTheme =()=>{
-    {context.toggleTheme && context.toggleTheme()}
-  }
 
   const handleClose = () => {
     setAnchorEl(null);
@@ -84,19 +77,17 @@ export default function PrimarySearchAppBar() {
       dispatch(setCity(cityState));
       setCityState('')
     }
-    console.log(Context)
   }
   const changeCity = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCityState(event.target.value);
   }
   
-
   return (
-    <Box sx={{backgroundColor: '#1976d2'}} >
-      <AppBar position="static" sx={{ flexGrow: 1, maxWidth: 1200, width: 1, mx: 'auto',  boxShadow: 'none' }}>
+    <Box className="wrapper-header" >
+      <AppBar className="container-header" position="static" >
         <Toolbar>
-          
-          <img src={logo} style={{height: "40px"}}/>
+
+          <img src={logo} style={{ height: "40px" }} />
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -110,31 +101,31 @@ export default function PrimarySearchAppBar() {
 
           </Search>
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-          <Switch {...label} onClick={handleTheme}/>
-            {loggedIn ? (imageUrl && (
-            <><Avatar alt="Remy Sharp" src={imageUrl} aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen} />
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-              >
-                <MenuItem onClick={handleClose}>{name}</MenuItem>
-                <MenuItem onClick={handleClose}>{email}</MenuItem>
-              </Menu> </>)
-            ) : (<Login/>)
+          <Box sx={{ display: { xs: 'none', md: 'flex', alignItems: 'center' } }}>
+            <Switches />
+            {imageUrl && (
+              <><Avatar alt="Remy Sharp" src={imageUrl} aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen} />
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorEl}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                >
+                  <MenuItem onClick={handleClose}>{name}</MenuItem>
+                  <MenuItem onClick={handleClose}>{email}</MenuItem>
+                </Menu> </>)
+
             }
           </Box>
         </Toolbar>

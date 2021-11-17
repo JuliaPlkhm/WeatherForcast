@@ -1,16 +1,9 @@
 import { FC} from "react";
 import Typography from '@mui/material/Typography';
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import './arrow.css'
-
-
 import Slider from 'react-slick'
-
-
-
-  
+import './arrow.css'
 
 export const SliderMain: FC = ({children}) => {
    

@@ -1,0 +1,16 @@
+
+.hourWeather{
+    display: flex;
+    flex-direction: column;
+   
+
+}
+
+.hourWeather__temp::after {
+    content: '\00B0';
+    font-weight: 500;
+   
+}
+.hourWeather__img{
+    height: 40px
+}

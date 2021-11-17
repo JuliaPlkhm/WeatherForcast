@@ -1,0 +1,18 @@
+
+.wrapper-footer{
+    padding: 10px 0;
+    background-color: rgb(21, 101, 192)
+}
+
+.container-footer{
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+   text-align: center
+}
+.btnGroup{
+    margin-bottom: 15px;
+}
+.btnGroup__item{
+    color:white !important
+}

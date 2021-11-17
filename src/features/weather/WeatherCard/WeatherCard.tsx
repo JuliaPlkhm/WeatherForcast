@@ -1,12 +1,16 @@
-import { FC} from "react";
-import { PropsCard } from "./type";
+import { FC, useContext} from "react";
+import { Context } from "../../../App";
+import { PropsCard } from "../type";
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
-import { weatherTranslations } from "./weatherTranslations";
+import { weatherTranslations } from "../weatherTranslations";
 import { useParams, Link } from 'react-router-dom';
+import './WeatherCard.style.css'
 
 export const WeatherCard: FC<PropsCard> = (props) => {
+  const context = useContext(Context);
+
   let date = (d: string) => {
     return new Date(d).toLocaleString('ru',
       {
@@ -16,13 +20,9 @@ export const WeatherCard: FC<PropsCard> = (props) => {
     )
   };
 
-  let formatter = new Intl.DateTimeFormat("ru", {
-    hour: "numeric",
-    minute: "numeric",
-  });
 
   return (
-    <Card sx={{ maxWidth: 140, width: 1, height: 180, backgroundColor: 'rgba(0, 0, 0, 0.3)' }}>
+    <Card className = {`weatherCard weatherCard-${context.theme}`} >
     <CardActionArea  component={Link} to={`/${props.city}/${props.index}`}  sx={{ padding: 2, height: 1}}>
 
    
@@ -33,7 +33,7 @@ export const WeatherCard: FC<PropsCard> = (props) => {
         src={`https://yastatic.net/weather/i/icons/funky/dark/${props.forecast?.parts.day_short.icon}.svg`}
         alt="weather icon"
       ></img>
-      <Typography gutterBottom variant="h5" component="div">
+      <Typography className = "weatherCard__temp" gutterBottom variant="h5" component="div">
         {props.forecast?.parts.day_short.temp}
       </Typography>
       <Typography variant="body2" color="text.secondary">

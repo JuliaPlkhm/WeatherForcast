@@ -1,10 +1,8 @@
-import React, { useEffect, FC, useState, useContext } from "react";
+import React, {  FC,  useContext } from "react";
 import { Context } from "../../../App";
-import { useParams } from 'react-router-dom';
-import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 
-import { useAppSelector, useAppDispatch } from '../../../Redux/hooks';
+import { useAppDispatch } from '../../../Redux/hooks';
 import { setCity } from "../../../Redux/weatherSlice";
 
 import './CityGrid.style.css'
@@ -15,20 +13,14 @@ const cities = ['Амстердам', 'Андорра-ла-Велья', 'Афи�
 export const CityGrid: FC = () => {
     const context = useContext(Context);
     const dispatch = useAppDispatch();
-
-    const handleClick=(el:string)=>(event: React.MouseEvent<HTMLElement>)=>{
-     
-          dispatch(setCity(el));
-          
-        }
- 
-      
-   
+    const handleClick = (el: string) => (event: React.MouseEvent<HTMLElement>) => {
+        dispatch(setCity(el));
+    }
     return (
 
         <div className="cityGrid">
             {cities.map((el: string) => (
-                <Link  className="cityGrid__item" to ={`/${el}/0`} onClick={handleClick(el)} >{el}</Link>
+                <Link className={`cityGrid__item-${context.theme}`} to={`/${el}/0`} onClick={handleClick(el)} >{el}</Link>
             ))}
         </div>
 

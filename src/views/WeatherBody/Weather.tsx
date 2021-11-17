@@ -9,12 +9,12 @@ import Snackbar from "@mui/material/Snackbar";
 import MuiAlert, { AlertProps } from "@mui/material/Alert";
 import { useAppSelector, useAppDispatch } from '../../Redux/hooks';
 import { setCoords, setCity } from "../../Redux/weatherSlice";
-import { WeatherCard } from "../../features/weather/WeatherCard";
-import { WeatherInfo } from "../../features/weather/WeatherInfo";
+import { WeatherCard } from "../../features/weather/WeatherCard/WeatherCard";
+import { WeatherInfo } from "../../features/weather/WeatherInfo/WeatherInfo";
 import { Input } from "@mui/material";
 import YandexMapComponent from "../../features/weather/map";
-import PrimarySearchAppBar from "../../features/weather/Header"
-import Footer from "../../features/weather/Footer"
+import PrimarySearchAppBar from "../../features/weather/Header/Header"
+import Footer from "../../features/weather/Footer/Footer"
 import './Weather.css'
 import background from './../../assets/sky.jpg'
 import {CoordsSearch} from "../../features/weather/CoordsSearch/CoordsSearch"

@@ -1,15 +1,15 @@
-import { FC} from "react";
-import { PropsInfo } from "./type";
+import { FC, useContext} from "react";
+import { PropsInfo } from "../type";
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
-import { weatherTranslations } from "./weatherTranslations";
-import Grid from '@mui/material/Grid';
-import { HourWeather } from "./HourWeather";
-import Stack from '@mui/material/Stack';
-import { SliderMain } from  "./Slider"
+import { weatherTranslations } from "../weatherTranslations";
+import { Context } from "../../../App";
+import { HourWeather } from "../HourWeather/HourWeather";
+import { SliderMain } from  "../Slider/Slider"
+import './WeatherInfo.style.css'
 
 export const WeatherInfo: FC<PropsInfo> = (props) => {
-
+  const context = useContext(Context);
   let date = (d: string) => {
     return new Date(d).toLocaleString('ru',
       {
@@ -18,13 +18,10 @@ export const WeatherInfo: FC<PropsInfo> = (props) => {
       }
     )
   };
-  // let formatter = new Intl.DateTimeFormat("ru", {
-  //   hour: "numeric",
-  //   minute: "numeric",
-  // });
+ 
   return (
 
-    <Card sx={{ maxWidth: 1200, width: 1,  padding: 2, marginLeft: 2, mb: 3, mx: 'auto', backgroundColor: 'rgba(0, 0, 0, 0.3)' , boxSizing: 'border-box' }}>
+    <Card className = {`weatherInfo weatherInfo-${context.theme}`} >
       <Typography variant="h6" >
         {props.geo?.locality?.name || "Нет данных"}
       </Typography>
@@ -35,30 +32,18 @@ export const WeatherInfo: FC<PropsInfo> = (props) => {
         src={`https://yastatic.net/weather/i/icons/funky/dark/${props.forecast?.parts.day_short.icon}.svg`}
         alt="weather icon"
       ></img>
-      <Typography gutterBottom variant="h4" component="div">
+      <Typography className = "weatherInfo__temp" gutterBottom variant="h4" component="div">
         {props.forecast?.parts.day_short.temp || "Нет данных"}
       </Typography>
-      <Typography variant="h6" color="text.secondary">
+      <Typography className = "weatherInfo__temp" variant="h6" color="text.secondary">
         {`Ощущается как ${props.forecast?.parts.day_short.feels_like}` || "Нет данных"}
       </Typography>
-      <Typography variant="h6" color="text.secondary" sx={{
-        '&::after': {
-          content: '""',
-          borderBottom: '1px solid rgba(0, 0, 0, 0.2)',
-          display: 'block',
-          boxShadow: '0px 0px 5px rgba(0, 0, 0, 0.6)',
-          my: 2
-        }
-      }}>
+      <Typography className = "weatherInfo__text" variant="h6" color="text.secondary" >
         {props.forecast && weatherTranslations[String(props.forecast?.parts.day_short.condition)] || "Нет данных"}
       </Typography>
-   
-      
       <SliderMain>
           {props.forecast?.hours.map((el) => <HourWeather hour={el.hour} icon={el.icon} temp={el.temp} />)}
       </SliderMain>
-     
-      
       
     </Card>
   );
