@@ -18,32 +18,30 @@ export const WeatherInfo: FC<PropsInfo> = (props) => {
       }
     )
   };
-  console.log(props.forecast?.hours)
-  let formatter = new Intl.DateTimeFormat("ru", {
-    hour: "numeric",
-    minute: "numeric",
-  });
-  console.log(formatter.format(1636578000))
+  // let formatter = new Intl.DateTimeFormat("ru", {
+  //   hour: "numeric",
+  //   minute: "numeric",
+  // });
   return (
 
     <Card sx={{ maxWidth: 1200, width: 1,  padding: 2, marginLeft: 2, mb: 3, mx: 'auto', backgroundColor: 'rgba(0, 0, 0, 0.3)' , boxSizing: 'border-box' }}>
       <Typography variant="h6" >
-        {props.geo?.locality.name}
+        {props.geo?.locality?.name || "Нет данных"}
       </Typography>
       <Typography variant="h6" >
-        {date(props.forecast?.date as string)}
+        {date(props.forecast?.date as string) || "Нет данных"}
       </Typography>
       <img style={{ height: "90px" }}
         src={`https://yastatic.net/weather/i/icons/funky/dark/${props.forecast?.parts.day_short.icon}.svg`}
         alt="weather icon"
       ></img>
-      <Typography gutterBottom variant="h5" component="div">
-        {props.forecast?.parts.day_short.temp}
+      <Typography gutterBottom variant="h4" component="div">
+        {props.forecast?.parts.day_short.temp || "Нет данных"}
       </Typography>
-      <Typography variant="body2" color="text.secondary">
-        {`Ощущается как ${props.forecast?.parts.day_short.feels_like}`}
+      <Typography variant="h6" color="text.secondary">
+        {`Ощущается как ${props.forecast?.parts.day_short.feels_like}` || "Нет данных"}
       </Typography>
-      <Typography variant="body2" color="text.secondary" sx={{
+      <Typography variant="h6" color="text.secondary" sx={{
         '&::after': {
           content: '""',
           borderBottom: '1px solid rgba(0, 0, 0, 0.2)',
@@ -52,7 +50,7 @@ export const WeatherInfo: FC<PropsInfo> = (props) => {
           my: 2
         }
       }}>
-        {props.forecast && weatherTranslations[String(props.forecast?.parts.day_short.condition)]}
+        {props.forecast && weatherTranslations[String(props.forecast?.parts.day_short.condition)] || "Нет данных"}
       </Typography>
    
       

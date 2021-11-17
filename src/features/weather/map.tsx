@@ -28,16 +28,17 @@ const YandexMapComponent = (props:Props) => {
   }, [props.city]);
 
 return (
-  <div style={{maxWidth:"1200px", width: '100%', margin: "auto"}}>
+  <div style={{maxWidth:"1200px", width: '100%', margin: "auto",marginBottom: "30px", padding: "0 30px"}}>
     <YMaps
       query={{
         apikey: "d104022f-e6f6-4d01-8182-2d11337e478a",
       }} >
       <div>
         <Map
-          state={{ center: coords, zoom: 5 }}
+          state={{ center: coords, zoom: 15 }}
           height="600px"
-          width="1200px"
+          maxWidth="1200px"
+          width= '100%'
           margin="auto"
           onClick={(event: any) => {
             dispatch(setCoords(event.get('coords')))

@@ -12,9 +12,8 @@ import Menu from '@mui/material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { useAppSelector, useAppDispatch } from '../../Redux/hooks';
 import { setCity } from "../../Redux/weatherSlice";
-import logo from './weather_free-file.png'
+import logo from './../../assets/logo.png'
 import { Login } from './Login'
-import  {IContext} from './type'
 import Switch from '@mui/material/Switch';
 
 const label = { inputProps: { 'aria-label': 'Switch demo' } };

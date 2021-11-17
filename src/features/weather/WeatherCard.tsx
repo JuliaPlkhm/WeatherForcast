@@ -23,7 +23,7 @@ export const WeatherCard: FC<PropsCard> = (props) => {
 
   return (
     <Card sx={{ maxWidth: 140, width: 1, height: 180, backgroundColor: 'rgba(0, 0, 0, 0.3)' }}>
-    <CardActionArea  component={Link} to={`/${props.index}`}  sx={{ padding: 2, height: 1}}>
+    <CardActionArea  component={Link} to={`/${props.city}/${props.index}`}  sx={{ padding: 2, height: 1}}>
 
    
       <Typography variant="body2" color="text.secondary">

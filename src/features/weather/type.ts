@@ -45,9 +45,10 @@ export interface Props{
 export interface PropsCard{
   forecast: ForecastParts | undefined;
   geo: Geo | undefined;
-  fact: Fact | undefined;
+  fact?: Fact | undefined;
   key: number;
-  index: number
+  index: number;
+  city: string
 
 }
 export interface PropsInfo{
@@ -58,6 +59,7 @@ export interface PropsInfo{
 
 export type QuizParams = {
   id: string;
+  city: string;
 };
 
 export interface IContext{
