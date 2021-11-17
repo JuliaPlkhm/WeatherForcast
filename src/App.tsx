@@ -30,7 +30,7 @@ function App() {
             {/* 
           </ProtectedRoute> */}
           <Route path="/login">
-           {loggedIn? <Redirect to="/Минск/0" /> :<Login />} 
+           {loggedIn? <Redirect to="/" /> :<Login />} 
           </Route>
         </Switch>
       </Router>
