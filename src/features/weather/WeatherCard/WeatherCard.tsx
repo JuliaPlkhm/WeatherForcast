@@ -24,8 +24,6 @@ export const WeatherCard: FC<PropsCard> = (props) => {
   return (
     <Card className = {`weatherCard weatherCard-${context.theme}`} >
     <CardActionArea  component={Link} to={`/${props.city}/${props.index}`}  sx={{ padding: 2, height: 1}}>
-
-   
       <Typography variant="body2" color="text.secondary">
         {date(props.forecast?.date as string)}
       </Typography>

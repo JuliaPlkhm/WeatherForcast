@@ -1,0 +1,93 @@
+@keyframes custom1{
+    0%{
+        transform: translate(0);
+       
+    }
+
+   100%{
+        transform: translateX(800px) ;
+        opacity: 0;
+
+    }
+}
+@keyframes custom2{
+    0%{
+        transform: translate(0);
+       
+    }
+
+   100%{
+        transform: translateX(-800px);
+        opacity: 0;
+
+    }
+}
+@keyframes custom3{
+    0%{
+        transform: translate(0);
+       
+    }
+
+   100%{
+        transform: translate(-800px, 400px);
+        opacity: 0;
+
+    }
+}
+@keyframes custom4{
+    0%{
+        transform: translate(0);
+       
+    }
+
+   100%{
+        transform: translate(800px, 400px);
+        opacity: 0;
+    }
+}
+@keyframes custom5{
+    0%{
+        transform: translate(0);
+       
+    }
+
+   100%{
+        transform: translateY(-400px);
+        opacity: 0;
+
+    }
+}
+@keyframes custom6{
+    0%{
+        opacity: 0;
+
+       
+    }
+
+   100%{
+        opacity: 1;
+
+    }
+}
+.login__img{
+    height: 500px;
+    position: absolute;
+}
+.login__img-1{
+    animation: custom1 2s forwards;
+}
+.login__img-2{
+     animation: custom2 2s forwards;
+}
+.login__img-3{
+    animation: custom3 2s forwards;
+}
+.login__img-4{
+    animation: custom4 2s forwards;
+}
+.login__img-5{
+    animation: custom5 2s forwards;
+}
+.login__form{
+    animation: custom6 5s forwards;
+}

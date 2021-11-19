@@ -16,3 +16,6 @@
 .btnGroup__item{
     color:white
 }
+.MuiMenuItem-root:not(:last-of-type):hover{
+    background-color: inherit;
+}

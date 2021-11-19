@@ -1,13 +1,13 @@
-import * as React from 'react';
+import React, {FC } from "react";
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import { GoogleLogin } from 'react-google-login'
 import {  useAppDispatch } from '../../Redux/hooks';
 import {  setLogin, setUser } from "../../Redux/UserSlice";
+import "./Login.style.css"
 
-
-export  function Login() {
+export  const Login: FC = () => {
     const dispatch = useAppDispatch();
     const responseGoogle = (response: any) => {
         dispatch(setLogin(true))
@@ -21,11 +21,29 @@ export  function Login() {
               justifyContent: 'center',
               alignItems: 'center',
               flexWrap: 'wrap',
-              
+              position: 'relative',
+              overflow:'hidden',
           }}
       >
-
-          <Paper elevation={3} sx={{
+      <img className="login__img login__img-1"
+        src={`https://yastatic.net/weather/i/icons/funky/dark/ovc_-ra.svg`}
+        alt="weather icon"
+      ></img>
+      <img className="login__img login__img-2"
+        src={`https://yastatic.net/weather/i/icons/funky/dark/ovc_+sn.svg`}
+        alt="weather icon"
+      ></img>
+      <img className="login__img login__img-3"
+        src={`https://yastatic.net/weather/i/icons/funky/dark/ovc.svg`}
+        alt="weather icon"
+      ></img> <img className="login__img login__img-4"
+        src={`https://yastatic.net/weather/i/icons/funky/dark/skc_d.svg`}
+        alt="weather icon"
+      ></img> <img className=" login__img login__img-5"
+        src={`https://yastatic.net/weather/i/icons/funky/dark/bkn_d.svg`}
+        alt="weather icon"
+      ></img>
+          <Paper className="login__form" elevation={3} sx={{
               padding: '10px',
               height: '400px',
               width: '400px',

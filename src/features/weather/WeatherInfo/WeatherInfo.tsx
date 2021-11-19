@@ -26,20 +26,20 @@ export const WeatherInfo: FC<PropsInfo> = (props) => {
         {props.geo?.locality?.name || "Нет данных"}
       </Typography>
       <Typography variant="h6" >
-        {date(props.forecast?.date as string) || "Нет данных"}
+        {date(props.forecast?.date as string) }
       </Typography>
       <img style={{ height: "90px" }}
         src={`https://yastatic.net/weather/i/icons/funky/dark/${props.forecast?.parts.day_short.icon}.svg`}
         alt="weather icon"
       ></img>
       <Typography className = "weatherInfo__temp" gutterBottom variant="h4" component="div">
-        {props.forecast?.parts.day_short.temp || "Нет данных"}
+        {props.forecast?.parts.day_short.temp}
       </Typography>
       <Typography className = "weatherInfo__temp" variant="h6" color="text.secondary">
-        {`Ощущается как ${props.forecast?.parts.day_short.feels_like}` || "Нет данных"}
+        {`Ощущается как ${props.forecast?.parts.day_short.feels_like}`}
       </Typography>
       <Typography className = "weatherInfo__text" variant="h6" color="text.secondary" >
-        {(props.forecast && weatherTranslations[String(props.forecast?.parts.day_short.condition)] )|| "Нет данных"}
+        {(props.forecast && weatherTranslations[String(props.forecast?.parts.day_short.condition)] )}
       </Typography>
       <SliderMain>
           {props.forecast?.hours.map((el, index) => <HourWeather hour={el.hour} icon={el.icon} temp={el.temp} key ={index}/>)}

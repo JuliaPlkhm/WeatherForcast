@@ -1,6 +1,4 @@
-import React, {  useState } from "react";
-
-
+import React, { FC, useState } from "react";
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -9,14 +7,13 @@ import InputBase from '@mui/material/InputBase';
 import Avatar from '@mui/material/Avatar';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+import Typography from '@mui/material/Typography';
 import SearchIcon from '@mui/icons-material/Search';
 import { useAppSelector, useAppDispatch } from '../../../Redux/hooks';
 import { setCity } from "../../../Redux/weatherSlice";
 import logo from './../../../assets/logo.png'
 import {Switches} from '../Switch'
 import {  setLogin } from "../../../Redux/UserSlice";
-
-
 import './Header.style.css'
 
 
@@ -60,7 +57,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+export const PrimarySearchAppBar: FC =() =>{
   const {name, imageUrl, email} = useAppSelector(state => state.login.user);
  
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -130,8 +127,8 @@ export default function PrimarySearchAppBar() {
                   open={Boolean(anchorEl)}
                   onClose={handleClose}
                 >
-                  <MenuItem onClick={handleClose}>{name}</MenuItem>
-                  <MenuItem onClick={handleClose}>{email}</MenuItem>
+                  <MenuItem onClick={handleClose} >{name}</MenuItem>
+                  <MenuItem onClick={handleClose} href="mailto:">{email}</MenuItem>
                   <MenuItem onClick={handleExit}>Выйти</MenuItem>
 
                 </Menu> </>)

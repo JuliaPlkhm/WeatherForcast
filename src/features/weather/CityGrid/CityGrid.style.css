@@ -9,12 +9,18 @@
     grid-template-columns: repeat(6, 1fr);
     text-align: start;
     color: blue;
+    
 
 }
+.cityGrid__item:hover{
+    color: rgb(25, 118, 210);
 
+}
 .cityGrid__item-light{
     color: black;
+    transition: all linear .3s;
 }
 .cityGrid__item-dark{
     color: white;
+    transition: all linear .3s;
 }

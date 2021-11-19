@@ -5,7 +5,6 @@ import './HourWeather.style.css'
 
 export const HourWeather: FC<HoursType> = (props) => {
 
-
     return (
 
         <div className = "hourWeather" > 

@@ -9,10 +9,10 @@ import MuiAlert, { AlertProps } from "@mui/material/Alert";
 import { useAppSelector } from '../../Redux/hooks';
 import { WeatherCard } from "../../features/weather/WeatherCard/WeatherCard";
 import { WeatherInfo } from "../../features/weather/WeatherInfo/WeatherInfo";
-import YandexMapComponent from "../../features/weather/map";
-import PrimarySearchAppBar from "../../features/weather/Header/Header"
-import Footer from "../../features/weather/Footer/Footer"
-import './Weather.css'
+import {YandexMapComponent} from "../../features/weather/Map/Map";
+import {PrimarySearchAppBar} from "../../features/weather/Header/Header"
+import {Footer} from "../../features/weather/Footer/Footer"
+import './Weather.style.css'
 import {CoordsSearch} from "../../features/weather/CoordsSearch/CoordsSearch"
 import {CityGrid} from "../../features/weather/CityGrid/CityGrid"
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
