@@ -24,13 +24,9 @@ function App() {
       <HashRouter basename={process.env.PUBLIC_URL}>
         <Switch>
           <ProtectedRoute path={`/:city/:id`} component={Weather} exact/>
-            {/* <Weather />
-          </ProtectedRoute> */}
           <ProtectedRoute path="/" component={Weather} exact/>
-            {/* 
-          </ProtectedRoute> */}
           <Route path="/login">
-           {loggedIn? <Redirect to="/" /> :<Login />} 
+           {loggedIn? <Redirect to="/" />:<Login />} 
           </Route>
         </Switch>
       </HashRouter>

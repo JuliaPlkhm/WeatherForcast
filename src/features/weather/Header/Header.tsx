@@ -14,6 +14,9 @@ import { useAppSelector, useAppDispatch } from '../../../Redux/hooks';
 import { setCity } from "../../../Redux/weatherSlice";
 import logo from './../../../assets/logo.png'
 import {Switches} from '../Switch'
+import {  setLogin } from "../../../Redux/UserSlice";
+
+
 import './Header.style.css'
 
 
@@ -72,7 +75,12 @@ export default function PrimarySearchAppBar() {
     setAnchorEl(null);
   };
 
+  const handleExit=()=>{
+      dispatch(setLogin(false));
+  }
+
   const handleClick=(event: React.KeyboardEvent<HTMLInputElement>)=>{
+    
     if(event.key === 'Enter'){
       dispatch(setCity(cityState));
       setCityState('')
@@ -124,6 +132,8 @@ export default function PrimarySearchAppBar() {
                 >
                   <MenuItem onClick={handleClose}>{name}</MenuItem>
                   <MenuItem onClick={handleClose}>{email}</MenuItem>
+                  <MenuItem onClick={handleExit}>Выйти</MenuItem>
+
                 </Menu> </>)
 
             }

@@ -54,7 +54,7 @@ export const Weather: FC = () => {
 
  
   return (
-    <div >
+    <div className="wrapper-main">
       <PrimarySearchAppBar />
 
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
@@ -64,7 +64,7 @@ export const Weather: FC = () => {
       </Snackbar>
 
       {isLoading ? (
-        <CircularProgress></CircularProgress>
+        <CircularProgress sx={{textAlign:"center"}}></CircularProgress>
       ) : (
         
           <div className={`wrapper weatherWrapper weather-${context.theme}`}>
