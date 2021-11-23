@@ -9,14 +9,13 @@ import './Footer.style.css'
 
 export const Footer: FC = () =>  {
     return (
-        <footer className="wrapper-footer">
-            <div className="container-footer" style={{ padding: '20px' }}>
-                <ButtonGroup className="btnGroup" variant="contained" aria-label=" button group"  >
+        <footer className="wrapper footerWrapper">
+            <div className="wrapper__container footer">
+                <ButtonGroup className="footer__btnGroup btnGroup" variant="contained" aria-label=" button group"  >
 
                     <Link className="btnGroup__item" href="https://www.facebook.com/" target="_blank"  >
                         <FacebookIcon />
                     </Link>
-
 
                     <Link className="btnGroup__item" href="https://www.twitter.com/" target="_blank">
                         <TwitterIcon />

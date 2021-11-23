@@ -3,8 +3,6 @@
     max-width: 140px;
     height: 180px;
     width: 100%;
- 
-   
 
 }
 
@@ -17,5 +15,34 @@
 .weatherCard__temp::after {
     content: '\00B0';
     font-weight: 500;
-   
-  }
+}
+.weatherCard__img{
+    height: 48px;
+}
+
+.weatherCard__item{
+    padding: 16px;
+    height: 100%;
+    
+
+}
+
+@media (max-width: 1024px) {
+    .weatherCard{
+        max-width: 1000px;
+        height: 100%;
+        width: 100%;
+    
+    }
+    .weatherCard__item{
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr);
+
+    } 
+    .weatherCard__temp{
+        margin-bottom: 0 !important;
+    }
+    .weatherCard__img{
+        justify-self: center;
+    }
+}

@@ -5,9 +5,9 @@ import {
   GeolocationControl,
   Placemark,
 } from "react-yandex-maps";
-import { Props } from '../type';
-import { useAppSelector, useAppDispatch } from '../../../Redux/hooks';
-import { setCoords} from "../../../Redux/weatherSlice";
+import { Props } from '../../type';
+import { useAppSelector, useAppDispatch } from '../../Redux/hooks';
+import { setCoords} from "../../Redux/weatherSlice";
 import "./Map.style.css"
 
 export const YandexMapComponent = (props:Props) => {
@@ -28,18 +28,15 @@ export const YandexMapComponent = (props:Props) => {
   }, [props.city, loadMaps]);
 
 return (
-  <div className ="map-container">
+  <div className ="wrapper__container mapContainer">
     <YMaps
       query={{
         apikey: "d104022f-e6f6-4d01-8182-2d11337e478a",
       }} >
       <div>
-        <Map
+        <Map className ="mapContainer__map"
           state={{ center: coords, zoom: 15 }}
-          height="600px"
-          maxWidth="1200px"
-          width= '100%'
-          margin="auto"
+          
           onClick={(event: any) => {
             dispatch(setCoords(event.get('coords')))
           }}

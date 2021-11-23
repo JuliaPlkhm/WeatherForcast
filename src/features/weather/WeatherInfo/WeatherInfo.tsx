@@ -1,11 +1,11 @@
 import { FC, useContext} from "react";
-import { PropsInfo } from "../type";
+import { PropsInfo } from "../../../type";
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import { weatherTranslations } from "../weatherTranslations";
 import { Context } from "../../../App";
 import { HourWeather } from "../HourWeather/HourWeather";
-import { SliderMain } from  "../Slider/Slider"
+import { SliderMain } from  "../../../components/Slider/Slider"
 import './WeatherInfo.style.css'
 
 export const WeatherInfo: FC<PropsInfo> = (props) => {
@@ -22,13 +22,13 @@ export const WeatherInfo: FC<PropsInfo> = (props) => {
   return (
 
     <Card className = {`weatherInfo weatherInfo-${context.theme}`} >
-      <Typography variant="h6" >
+      <Typography className= "weatherInfo__text" variant="h6" >
         {props.geo?.locality?.name || "Нет данных"}
       </Typography>
-      <Typography variant="h6" >
-        {date(props.forecast?.date as string) }
+      <Typography className= "weatherInfo__text" variant="h6" >
+        {props.forecast?.date ? date(props.forecast?.date) : "Нет данных"}
       </Typography>
-      <img style={{ height: "90px" }}
+      <img className= "weatherInfo_img" style={{ height: "90px" }}
         src={`https://yastatic.net/weather/i/icons/funky/dark/${props.forecast?.parts.day_short.icon}.svg`}
         alt="weather icon"
       ></img>
@@ -36,9 +36,9 @@ export const WeatherInfo: FC<PropsInfo> = (props) => {
         {props.forecast?.parts.day_short.temp}
       </Typography>
       <Typography className = "weatherInfo__temp" variant="h6" color="text.secondary">
-        {`Ощущается как ${props.forecast?.parts.day_short.feels_like}`}
+        {props.forecast?.parts.day_short.feels_like && (`Ощущается как ${props.forecast?.parts.day_short.feels_like}`)}
       </Typography>
-      <Typography className = "weatherInfo__text" variant="h6" color="text.secondary" >
+      <Typography className = "weatherInfo__condition" variant="h6" color="text.secondary" >
         {(props.forecast && weatherTranslations[String(props.forecast?.parts.day_short.condition)] )}
       </Typography>
       <SliderMain>

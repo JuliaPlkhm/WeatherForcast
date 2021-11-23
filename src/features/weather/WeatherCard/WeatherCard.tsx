@@ -1,6 +1,6 @@
 import { FC, useContext} from "react";
 import { Context } from "../../../App";
-import { PropsCard } from "../type";
+import { PropsCard } from "../../../type";
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
@@ -23,18 +23,18 @@ export const WeatherCard: FC<PropsCard> = (props) => {
 
   return (
     <Card className = {`weatherCard weatherCard-${context.theme}`} >
-    <CardActionArea  component={Link} to={`/${props.city}/${props.index}`}  sx={{ padding: 2, height: 1}}>
-      <Typography variant="body2" color="text.secondary">
-        {date(props.forecast?.date as string)}
+    <CardActionArea className = "weatherCard__item" component={Link} to={`/${props.city}/${props.index}`}  sx={{ padding: 2, height: 1}}>
+      <Typography className = "weatherCard__date"  variant="body2" color="text.secondary">
+        {props.forecast?.date && date(props.forecast?.date)}
       </Typography>
-      <img style={{ height: "48px" }}
+      <img className = "weatherCard__img" 
         src={`https://yastatic.net/weather/i/icons/funky/dark/${props.forecast?.parts.day_short.icon}.svg`}
         alt="weather icon"
       ></img>
       <Typography className = "weatherCard__temp" gutterBottom variant="h5" component="div">
         {props.forecast?.parts.day_short.temp}
       </Typography>
-      <Typography variant="body2" color="text.secondary">
+      <Typography className = "weatherCard__condition"  variant="body2" color="text.secondary">
         {props.forecast && weatherTranslations[String(props.forecast?.parts.day_short.condition)]}
       </Typography>
     </CardActionArea>

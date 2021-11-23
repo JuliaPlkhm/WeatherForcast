@@ -1,7 +1,7 @@
 import  {useContext} from 'react';
 import { styled } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
-import { Context } from "../../App";
+import { Context } from "../App";
 
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({

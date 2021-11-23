@@ -1,4 +1,4 @@
-import { useAppSelector } from '../../Redux/hooks';
+import { useAppSelector } from '../Redux/hooks';
 import { Redirect, Route } from "react-router-dom";
 
 

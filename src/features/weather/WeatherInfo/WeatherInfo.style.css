@@ -1,12 +1,7 @@
 
 .weatherInfo{
-    max-width: 1200px;
-    width: 100%;
-    padding: 10px;
-    margin: 0 auto; 
+    padding: 20px;
     margin-bottom: 30px
-   
-
 }
 
 .weatherInfo-light{
@@ -15,7 +10,7 @@
 .weatherInfo-dark{
     background-color: rgba(255, 255, 255, 0.3) !important;
 }
-.weatherInfo__text::after {
+.weatherInfo__condition::after {
     content: '';
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     display: block;

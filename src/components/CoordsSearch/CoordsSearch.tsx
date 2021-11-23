@@ -3,9 +3,9 @@ import Box from "@mui/material/Box";
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { Context } from "../../../App";
-import { useAppSelector, useAppDispatch } from '../../../Redux/hooks';
-import { setCoords } from "../../../Redux/weatherSlice";
+import { Context } from "../../App";
+import { useAppSelector, useAppDispatch } from '../../Redux/hooks';
+import { setCoords } from "../../Redux/weatherSlice";
 import './CoordsSearch.style.css'
 
 
@@ -35,8 +35,8 @@ export const CoordsSearch: FC = () => {
   }, [coords]);
 
   return (
-    <div className ='container-weatherCard' >
-      <Typography className ={`weatherCard__text-${context.theme}`} variant="h5">
+    <div className ='wrapper__container weatherCoord' >
+      <Typography className ={`weatherCoord__text weatherCoord__text-${context.theme}`} variant="h5">
       Поиск по координатам:
       </Typography>
      
@@ -49,14 +49,14 @@ export const CoordsSearch: FC = () => {
       autoComplete="off"
     >
         <TextField
-          className ={`weatherCard__input-${context.theme}`}
+          className ={`weatherCoord__input weatherCoord__input-${context.theme}`}
           label="Широта"
           id="outlined-size-small"
           size="small"
           value={coordsState[0]} onChange={changeCoords("lat")}
         />
         <TextField
-          className ={`weatherCard__input-${context.theme}`}
+          className ={`weatherCoord__input weatherCoord__input-${context.theme}`}
           label="Долгота"
           id="outlined-size-small"
           size="small"

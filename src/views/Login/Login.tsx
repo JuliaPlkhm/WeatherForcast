@@ -51,9 +51,8 @@ export  const Login: FC = () => {
               justifyContent: 'center',
               alignItems: 'center',
               flexWrap: 'wrap',
-
           }}>
-              <Typography variant="h4"sx={{
+              <Typography className="login__text" variant="h4"sx={{
               textAlign: 'center' }} >
                  Пожалуйста, авторизуйтесь!
               </Typography>

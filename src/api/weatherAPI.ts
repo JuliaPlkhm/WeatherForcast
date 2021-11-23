@@ -1,4 +1,4 @@
-import { Coords, Fact, Geo, Forecast } from "../features/weather/type";
+import { Coords, Fact, Geo, Forecast } from "../type";
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export type Response = { now: number; geo_object: Geo; fact: Fact; forecasts: Forecast  };
@@ -13,7 +13,7 @@ export type Response = { now: number; geo_object: Geo; fact: Fact; forecasts: Fo
 
 export const weatherApi = createApi({
   reducerPath: "weatherApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "https://server-weather-api.herokuapp.com/" }),
+  baseQuery: fetchBaseQuery({ baseUrl: "https://server-weather-api.herokuapp.com" }),
   endpoints: (builder) => ({
     getWeatherByQuery: builder.query<Response, Coords>({
       query: ({ lat, lon }) => `/weather?lat=${lat}&lon=${lon}`

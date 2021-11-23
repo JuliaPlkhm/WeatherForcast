@@ -7,13 +7,12 @@ import InputBase from '@mui/material/InputBase';
 import Avatar from '@mui/material/Avatar';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import Typography from '@mui/material/Typography';
 import SearchIcon from '@mui/icons-material/Search';
-import { useAppSelector, useAppDispatch } from '../../../Redux/hooks';
-import { setCity } from "../../../Redux/weatherSlice";
-import logo from './../../../assets/logo.png'
+import { useAppSelector, useAppDispatch } from '../../Redux/hooks';
+import { setCity } from "../../Redux/weatherSlice";
+import logo from './../../assets/logo.png'
 import {Switches} from '../Switch'
-import {  setLogin } from "../../../Redux/UserSlice";
+import {  setLogin } from "../../Redux/UserSlice";
 import './Header.style.css'
 
 
@@ -88,11 +87,11 @@ export const PrimarySearchAppBar: FC =() =>{
   }
   
   return (
-    <Box className="wrapper-header" >
-      <AppBar className="container-header" position="static" >
-        <Toolbar>
+    <Box className="wrapper headerWrapper" >
+      <AppBar className="wrapper__container header" position="static" >
+        <Toolbar className="header__toolbar">
 
-          <img src={logo} style={{ height: "40px" }} alt="logo" />
+          <img className="header__logo" src={logo} alt="logo" />
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
@@ -106,35 +105,34 @@ export const PrimarySearchAppBar: FC =() =>{
 
           </Search>
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', md: 'flex', alignItems: 'center' } }}>
+          <div className ="header__icon header-icon">
             <Switches />
             {imageUrl && (
-              <><Avatar alt="Remy Sharp" src={imageUrl} aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleProfileMenuOpen} />
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={Boolean(anchorEl)}
-                  onClose={handleClose}
-                >
-                  <MenuItem onClick={handleClose} >{name}</MenuItem>
-                  <MenuItem onClick={handleClose} href="mailto:">{email}</MenuItem>
-                  <MenuItem onClick={handleExit}>Выйти</MenuItem>
+              <><Avatar className ="header-icon__avatar" alt="avatar" src={imageUrl} aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleProfileMenuOpen} />
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={handleClose} >{name}</MenuItem>
+                <MenuItem onClick={handleClose} >{email}</MenuItem>
+                <MenuItem onClick={handleExit}>Выйти</MenuItem>
 
-                </Menu> </>)
-
+              </Menu> </>)
             }
-          </Box>
+          </div>
         </Toolbar>
       </AppBar>
     </Box>

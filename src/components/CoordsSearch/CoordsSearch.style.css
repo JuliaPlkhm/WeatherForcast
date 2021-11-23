@@ -1,0 +1,19 @@
+
+.weatherCoord{
+    margin-bottom: 30px;
+
+}
+
+.weatherCoord__text-light{
+    color: black;
+}
+.weatherCoord__text-dark{
+    color: white;
+}
+
+.weatherCoord__input-dark .MuiInputBase-root, 
+.weatherCoord__input-dark .MuiFormLabel-root,
+.weatherCoord__input-dark .MuiOutlinedInput-notchedOutline{  
+    border-color: rgba(255, 255, 255, 0.23);
+    color: white ;
+}

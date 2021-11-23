@@ -3,17 +3,17 @@ import { Context } from "../../App";
 import { useParams } from 'react-router-dom';
 import CircularProgress from "@mui/material/CircularProgress";
 import { useGetWeatherByQueryQuery } from "../../api/weatherAPI";
-import {  ForecastParts, QuizParams } from "../../features/weather/type";
+import {  ForecastParts, QuizParams } from "../../type";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert, { AlertProps } from "@mui/material/Alert";
 import { useAppSelector } from '../../Redux/hooks';
 import { WeatherCard } from "../../features/weather/WeatherCard/WeatherCard";
 import { WeatherInfo } from "../../features/weather/WeatherInfo/WeatherInfo";
-import {YandexMapComponent} from "../../features/weather/Map/Map";
-import {PrimarySearchAppBar} from "../../features/weather/Header/Header"
-import {Footer} from "../../features/weather/Footer/Footer"
+import {YandexMapComponent} from "../../components/Map/Map";
+import {PrimarySearchAppBar} from "../../components/Header/Header"
+import {Footer} from "../../components/Footer/Footer"
 import './Weather.style.css'
-import {CoordsSearch} from "../../features/weather/CoordsSearch/CoordsSearch"
+import {CoordsSearch} from "../../components/CoordsSearch/CoordsSearch"
 import {CityGrid} from "../../features/weather/CityGrid/CityGrid"
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
   props,
@@ -54,7 +54,7 @@ export const Weather: FC = () => {
 
  
   return (
-    <div className="wrapper-main">
+    <div>
       <PrimarySearchAppBar />
 
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
@@ -64,14 +64,16 @@ export const Weather: FC = () => {
       </Snackbar>
 
       {isLoading ? (
+        <div className="loading">
         <CircularProgress sx={{textAlign:"center"}}></CircularProgress>
+        </div>
       ) : (
         
-          <div className={`wrapper weatherWrapper weather-${context.theme}`}>
-            <div className={"container weathercontainer" }>
+          <div className={`wrapper  weatherWrapper weatherWrapper-${context.theme}`}>
+            <div className={"wrapper__container weatherContainer" }>
               <WeatherInfo forecast={data?.forecasts[Number(id) || 0]} geo={data?.geo_object} fact={data?.fact} />
 
-              <div className="weatherCards">
+              <div className="weatherContainer__Cards">
                 {data?.forecasts.map((el: ForecastParts, index: number) => (
                   <WeatherCard forecast={el} city={city} geo={data?.geo_object} key={index} index={index} />
                 ))}
@@ -80,7 +82,7 @@ export const Weather: FC = () => {
           </div>
         )
       }
-      <div className={` wrapper mapWrapper map-${context.theme}`}>
+      <div className={`wrapper mapWrapper mapWrapper-${context.theme}`}>
         <CoordsSearch />
         <YandexMapComponent city={city} />
         <CityGrid/>

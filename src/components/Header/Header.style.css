@@ -1,0 +1,33 @@
+
+.headerWrapper{
+    background-color: rgb(25, 118, 210);
+}
+
+.header{
+   flex-grow: 1;
+   box-shadow: none !important
+}
+.header__logo{
+    height: 40px;
+    margin-right: 10px;
+}
+.header__icon{
+    display: flex;
+    align-items: center;
+}
+
+.MuiMenuItem-root:not(:last-of-type):hover{
+    background-color: inherit;
+}
+@media (max-width: 600px) {
+    .header__logo{
+        display: none;
+    }
+    .header{
+        max-width: 100% !important;
+        padding: 0 10px !important;
+    }
+    .header__toolbar{
+        padding: 0 !important;
+    }
+}

@@ -66,3 +66,6 @@ export interface IContext{
   toggleTheme():void;
   theme: string
 }
+export type PropsSlider= {
+  children:  React.ReactChildren[] |  React.ReactChild[] | undefined;
+}

@@ -3,9 +3,9 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route, Redirect, HashRouter } from "react-router-dom";
 import { Weather } from './views/WeatherBody/Weather';
 import { createContext, useState } from "react";
-import  {IContext} from './features/weather/type'
+import  {IContext} from './type'
 import {Login} from './views/Login/Login';
-import ProtectedRoute from './features/weather/ProtectedRoute'
+import ProtectedRoute from './components/ProtectedRoute'
 import { useAppSelector } from './Redux/hooks';
 
 export const Context = createContext<Partial<IContext>>({});
@@ -21,7 +21,7 @@ function App() {
   };
   return (
     <Context.Provider value={ctx}>
-      <HashRouter basename={process.env.PUBLIC_URL}>
+      <HashRouter >
         <Switch>
           <ProtectedRoute path={`/:city/:id`} component={Weather} exact/>
           <ProtectedRoute path="/" component={Weather} exact/>

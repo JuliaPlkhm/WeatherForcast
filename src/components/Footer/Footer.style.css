@@ -1,0 +1,11 @@
+
+.footerWrapper{
+    background-color: rgb(21, 101, 192)
+}
+
+.btnGroup{
+    margin-bottom: 15px;
+}
+.btnGroup__item{
+    color:white !important
+}
