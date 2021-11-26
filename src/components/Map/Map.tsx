@@ -4,21 +4,37 @@ import {
   Map,
   GeolocationControl,
   Placemark,
+  YMapsApi,
+  GeoObject
 } from "react-yandex-maps";
 import { Props } from '../../type';
 import { useAppSelector, useAppDispatch } from '../../Redux/hooks';
 import { setCoords} from "../../Redux/weatherSlice";
 import "./Map.style.css"
 
+type Event ={
+  get:(props:string)=>[number, number]
+}
+type Res ={
+  geoObjects: typeof GeoObject
+}
+
 export const YandexMapComponent = (props:Props) => {
-  const [loadMaps, setLoadMaps] = useState<any>();
+  const [loadMaps, setLoadMaps] = useState<YMapsApi>();
   const coords = useAppSelector(state => state.map.coords);
   const dispatch = useAppDispatch();
 
-  const onLoadMap = (ymaps: any) => {
+  const onLoadMap = (ymaps: YMapsApi) => {
     setLoadMaps(ymaps)
-    ymaps.geocode(props.city)?.then((result: any) =>
-      dispatch(setCoords(result.geoObjects.get(0).geometry.getCoordinates())))
+    if(ymaps.geocode){
+      ymaps.geocode(props.city)?.then((result: any) =>{
+        console.log(result)
+
+        dispatch(setCoords(result.geoObjects.get(0).geometry.getCoordinates()))
+      }
+      )
+    }
+  
   }
   
   useEffect(() => {
@@ -37,7 +53,7 @@ return (
         <Map className ="mapContainer__map"
           state={{ center: coords, zoom: 15 }}
           
-          onClick={(event: any) => {
+          onClick={(event: Event) => {
             dispatch(setCoords(event.get('coords')))
           }}
           onLoad={onLoadMap}

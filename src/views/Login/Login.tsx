@@ -2,16 +2,20 @@ import React, {FC } from "react";
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import { GoogleLogin } from 'react-google-login'
+import { GoogleLogin, GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login'
 import {  useAppDispatch } from '../../Redux/hooks';
 import {  setLogin, setUser } from "../../Redux/UserSlice";
 import "./Login.style.css"
 
+
+
 export  const Login: FC = () => {
     const dispatch = useAppDispatch();
-    const responseGoogle = (response: any) => {
+    const responseGoogle = (response: GoogleLoginResponse | GoogleLoginResponseOffline) => {
+      if ('profileObj' in response ){   
         dispatch(setLogin(true))
         dispatch(setUser(response.profileObj))
+      }
     }
   return (
       <Box
@@ -43,15 +47,7 @@ export  const Login: FC = () => {
         src={`https://yastatic.net/weather/i/icons/funky/dark/bkn_d.svg`}
         alt="weather icon"
       ></img>
-          <Paper className="login__form" elevation={3} sx={{
-              padding: '10px',
-              height: '400px',
-              width: '400px',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              flexWrap: 'wrap',
-          }}>
+          <Paper className="login__form" elevation={3} >
               <Typography className="login__text" variant="h4"sx={{
               textAlign: 'center' }} >
                  Пожалуйста, авторизуйтесь!
@@ -60,7 +56,6 @@ export  const Login: FC = () => {
                   clientId="1079041619450-pnqvc7n9mgv9adlh7t76e7rc7d97lo4d.apps.googleusercontent.com"
                   buttonText="Login"
                   onSuccess={responseGoogle}
-                  onFailure={responseGoogle}
                   cookiePolicy={'single_host_origin'}
               />
           </Paper>

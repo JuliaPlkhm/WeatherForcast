@@ -1,13 +1,12 @@
 import { useAppSelector } from '../Redux/hooks';
-import { Redirect, Route } from "react-router-dom";
+import { Redirect, Route, RouteProps } from "react-router-dom";
 
+export interface ProtectedRouteProps extends RouteProps {
+  component: React.ComponentType<RouteProps>  
+}
 
-
-function ProtectedRoute({ component: Component, ...restOfProps }:any) {
+const ProtectedRoute:  React.FC<ProtectedRouteProps> = ({ component: Component, ...restOfProps }) =>{
     const loggedIn = useAppSelector(state => state.login.loggedIn);
-  console.log(Component);
-  console.log(restOfProps);
-
 
   return (
     <Route

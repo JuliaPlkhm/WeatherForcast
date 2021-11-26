@@ -69,3 +69,4 @@ export interface IContext{
 export type PropsSlider= {
   children:  React.ReactChildren[] |  React.ReactChild[] | undefined;
 }
+

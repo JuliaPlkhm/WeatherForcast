@@ -90,4 +90,11 @@
 }
 .login__form{
     animation: custom6 5s forwards;
+    padding: 10px;
+    height: 400px;
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }

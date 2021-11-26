@@ -3,13 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 interface State {
   coords: number[];
   city: string;
-  loggedIn: boolean
 }
 
 const initialState: State = {
   coords: [53.902284,27.561831],
   city: 'Минск',
-  loggedIn: false
  
 }
 
