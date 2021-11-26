@@ -57,10 +57,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export const PrimarySearchAppBar: FC =() =>{
-  const {loggedIn} = useAppSelector(state => state.login);
 
-    const  imageUrl = useAppSelector(state => state.login.user.imageUrl)
- 
+  const  {name, email, imageUrl} = useAppSelector(state => state.login.user)
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [cityState, setCityState] = useState<string>('');
   const dispatch = useAppDispatch();
@@ -128,8 +126,8 @@ export const PrimarySearchAppBar: FC =() =>{
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                {/* <MenuItem onClick={handleClose} >{name}</MenuItem>
-                <MenuItem onClick={handleClose} >{email}</MenuItem> */}
+                <MenuItem onClick={handleClose} >{name}</MenuItem>
+                <MenuItem onClick={handleClose} >{email}</MenuItem>
                 <MenuItem onClick={handleExit}>Выйти</MenuItem>
 
               </Menu> </>)
