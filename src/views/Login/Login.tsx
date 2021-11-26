@@ -54,8 +54,8 @@ export  const Login: FC = () => {
               </Typography>
               <GoogleLogin
                   clientId="1079041619450-pnqvc7n9mgv9adlh7t76e7rc7d97lo4d.apps.googleusercontent.com"
-                  responseType="code"
                   buttonText="Login"
+                  redirectUri='https://peaceful-sinoussi-b55a90.netlify.app'
                   onSuccess={responseGoogle}
                   cookiePolicy={'single_host_origin'}
               />
